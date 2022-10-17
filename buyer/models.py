@@ -20,3 +20,6 @@ class Cart(models.Model):
     buyer = models.ForeignKey(Buyer, on_delete = models.CASCADE)
 
     
+
+    
+   
