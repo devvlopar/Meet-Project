@@ -234,3 +234,17 @@ def paymenthandler(request):
     else:
        # if other than POST request is made.
         return HttpResponse('method failiure')
+
+#CRUD
+# create : TableName.objects.create()
+# retrive : TableName.objects.all()
+#           TableName.objects.filter()
+#           TableName.objects.get()
+
+# update : obj = TableName.objects.get()
+#          obj.attri1 = 'new'
+#          obj.attri2 = 'new2'
+#          obj.save()
+
+# delete : obj = TableName.objects.get()
+#          obj.delete()

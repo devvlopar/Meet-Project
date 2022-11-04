@@ -4,7 +4,9 @@ from seller.models import Product, Seller
 from django.core.mail import send_mail
 from django.conf import settings
 import random
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializer import ProductSerializer
 
 # Create your views here.
 def seller_index(request):
@@ -105,3 +107,12 @@ def my_products(request):
     seller_object = Seller.objects.get(email = request.session['email'])
     seller_products =  Product.objects.filter(seller = seller_object)
     return render(request, 'my_products.html', {'my_products': seller_products})
+
+
+class ProductView(APIView):
+    def get(self, request):
+        all_data = Product.objects.all()
+        product_data = ProductSerializer(all_data, many = True)
+        return Response(product_data.data)
+
+
